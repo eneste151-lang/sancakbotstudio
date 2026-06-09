@@ -163,6 +163,7 @@
             position: relative;
             width: min(1000px,95vw);
             height: 500px;
+            margin-top: 50px;
         }
         .center-node {
             position: absolute;
@@ -174,30 +175,34 @@
             padding: 25px 45px;
             border-radius: 22px;
             font-weight: 800;
+            z-index: 10;
         }
         .vertical-line {
             position: absolute;
             left: 50%;
-            top: 25%;
+            top: 0;
             width: 2px;
-            height: 50%;
-            background: white;
+            height: 100%;
+            background: rgba(255,255,255,.2);
+            z-index: 1;
         }
         .horizontal-top {
             position: absolute;
-            top: 32%;
+            top: 25%;
             left: 50%;
             width: 260px;
             height: 2px;
-            background: white;
+            background: rgba(255,255,255,.2);
+            z-index: 1;
         }
         .horizontal-bottom {
             position: absolute;
-            top: 68%;
+            bottom: 25%;
             left: 24%;
             width: 260px;
             height: 2px;
-            background: white;
+            background: rgba(255,255,255,.2);
+            z-index: 1;
         }
         .node {
             position: absolute;
@@ -206,17 +211,25 @@
             border-radius: 20px;
             padding: 25px 35px;
             transition: .3s;
+            z-index: 5;
+            max-width: 400px;
+            text-align: left;
         }
         .node:hover {
             border-color: white;
+            transform: scale(1.03);
         }
         .discordpy {
             right: 0;
-            top: 24%;
+            top: 0;
         }
         .nodejs {
             left: 0;
-            top: 60%;
+            bottom: 0;
+        }
+        .discordpy h3, .nodejs h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
         }
         .pricing-grid {
             width: min(1300px,95vw);
@@ -252,14 +265,6 @@
             margin-bottom: 14px;
             color: #c8c8c8;
         }
-        .discord-box {
-            margin-top: 50px;
-            max-width: 800px;
-            background: #0d0d0d;
-            border: 1px solid #222;
-            border-radius: 25px;
-            padding: 40px;
-        }
         .marquee {
             width: 100%;
             overflow: hidden;
@@ -292,6 +297,24 @@
             font-size: 14px;
             margin-top: -10px;
         }
+        .pricing-cta {
+            margin-top: 50px;
+        }
+        .pricing-cta h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .pricing-cta p {
+            font-size: 18px;
+            color: #bdbdbd;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .short-gap {
+            margin-top: -50px;
+        }
         footer {
             border-top: 1px solid #1d1d1d;
             text-align: center;
@@ -301,6 +324,11 @@
         @media(max-width:768px) {
             .links { display: none; }
             .title { font-size: 42px; }
+            .roadmap { height: auto; display: flex; flex-direction: column; gap: 20px; }
+            .center-node, .node, .vertical-line, .horizontal-top, .horizontal-bottom { position: static; transform: none; max-width: none; }
+            .horizontal-top, .horizontal-bottom { display: none; }
+            .roadmap-sub { text-align: center; margin-top: -30px; }
+            .short-gap { margin-top: 0; }
         }
     </style>
 </head>
@@ -348,12 +376,12 @@
 
 <section id="tech">
     <h2 class="title">Uzmanlık Alanlarımız</h2>
-    <p class="sub">Hızlı, güvenli ve modern Discord botları geliştiriyoruz. Altyapımız tamamen Discord botları üzerine kuruludur.</p>
+    <p class="sub roadmap-sub">Hızlı, güvenli ve modern Discord botları geliştiriyoruz. Altyapımız tamamen Discord botları üzerine kuruludur.</p>
     <div class="roadmap">
-        <div class="center-node">Sancak Bot Studio</div>
         <div class="vertical-line"></div>
         <div class="horizontal-top"></div>
         <div class="horizontal-bottom"></div>
+        <div class="center-node">Sancak Bot Studio</div>
         <div class="node discordpy">
             <h3>discord.py</h3>
             <p>Ticket sistemleri, moderasyon sistemleri, özel yönetim panelleri ve otomasyonlar.</p>
@@ -405,10 +433,10 @@
             </ul>
         </div>
     </div>
-    <div class="discord-box">
-        <h2>Satın Alma ve Destek</h2>
-        <p class="sub" style="margin-top:20px">Bot satın almak, deneme sürümü talep etmek veya özel proje görüşmek için Discord sunucumuza katılabilirsiniz.</p>
-        <a class="btn" href="https://discord.gg/4nwdCAnrQ6" target="_blank">Discord Sunucusuna Katıl</a>
+    <div class="pricing-cta">
+        <h2>Satın Alın ve Geliştirin</h2>
+        <p>İhtiyacınıza uygun bot paketini seçin ve sunucunuzun yönetimini kolaylaştırın, topluluğunuzu büyütün ve profesyonel bir Discord deneyimi sunun. Satın almak için Discord sunucumuza katılabilirsiniz.</p>
+        <a class="btn" href="https://discord.gg/4nwdCAnrQ6" target="_blank">Satın Al</a>
     </div>
 </section>
 
@@ -453,7 +481,7 @@
     </div>
 </section>
 
-<section>
+<section class="short-gap">
     <h2 class="title">Neden Sancak Bot Studio?</h2>
     <p class="sub">Amacımız sadece bir Discord botu sunmak değil, sunucunuzun yönetimini kolaylaştıracak, topluluğunuzu büyütecek ve size zaman kazandıracak sistemler geliştirmektir. Ticket sistemlerinden gelişmiş moderasyona, özel projelerden tamamen size özel çözümlere kadar geniş bir hizmet sunuyoruz.</p>
 </section>
