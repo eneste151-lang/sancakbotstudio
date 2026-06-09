@@ -1,463 +1,420 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sancak Bot Studio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sancak Bot Studio</title>
 
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px 10%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #111111;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        nav {
-            display: flex;
-            gap: 30px;
-        }
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-        nav a {
-            color: #aaaaaa;
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+::-webkit-scrollbar{
+    width:8px;
+}
 
-        nav a:hover {
-            color: #ffffff;
-        }
+::-webkit-scrollbar-thumb{
+    background:#fff;
+    border-radius:10px;
+}
 
-        .top-btn {
-            background: #ffffff;
-            color: #000000;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            border: 1px solid #ffffff;
-        }
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    backdrop-filter:blur(20px);
+    background:rgba(0,0,0,.8);
+    border-bottom:1px solid rgba(255,255,255,.1);
+    z-index:999;
+}
 
-        .top-btn:hover {
-            background: #000000;
-            color: #ffffff;
-        }
+.nav-container{
+    max-width:1300px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+}
 
-        section {
-            min-height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 120px 10% 80px 10%;
-            border-bottom: 1px solid #111111;
-            position: relative;
-        }
+.logo{
+    font-size:22px;
+    font-weight:800;
+    letter-spacing:2px;
+}
 
-        #page1 {
-            background: radial-gradient(circle at 50% 50%, #0a192f 0%, #000000 70%);
-        }
+.nav-links{
+    display:flex;
+    gap:30px;
+}
 
-        .badge {
-            background: #111111;
-            border: 1px solid #222222;
-            color: #94a3b8;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            display: inline-block;
-            letter-spacing: 0.5px;
-        }
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
 
-        h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 25px;
-            max-width: 900px;
-            letter-spacing: -1px;
-        }
+.nav-links a:hover{
+    opacity:.6;
+}
 
-        h1 span {
-            color: #2563eb;
-            text-shadow: 0 0 40px rgba(37, 99, 235, 0.3);
-        }
+section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    padding:100px 20px;
+}
 
-        p {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            max-width: 650px;
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
+.hero{
+    position:relative;
+}
 
-        .cta-group {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 60px;
-        }
+.hero::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:white;
+    filter:blur(180px);
+    opacity:.08;
+    border-radius:50%;
+}
 
-        .btn {
-            padding: 14px 32px;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    font-weight:900;
+    letter-spacing:4px;
+}
 
-        .btn-primary {
-            background: #ffffff;
-            color: #000000;
-            border: 1px solid #ffffff;
-        }
+.hero p{
+    margin-top:20px;
+    max-width:700px;
+    opacity:.8;
+    font-size:18px;
+}
 
-        .btn-primary:hover {
-            background: #2563eb;
-            color: #ffffff;
-            border-color: #2563eb;
-            box-shadow: 0 0 25px rgba(37, 99, 235, 0.4);
-        }
+.btn{
+    margin-top:30px;
+    padding:16px 34px;
+    background:white;
+    color:black;
+    text-decoration:none;
+    border-radius:100px;
+    font-weight:700;
+    transition:.3s;
+}
 
-        .btn-secondary {
-            background: #111111;
-            color: #ffffff;
-            border: 1px solid #222222;
-        }
+.btn:hover{
+    transform:translateY(-4px);
+}
 
-        .btn-secondary:hover {
-            background: #000000;
-            border-color: #ffffff;
-        }
+.title{
+    font-size:55px;
+    margin-bottom:20px;
+    font-weight:800;
+}
 
-        .btn-disabled {
-            background: #16161d;
-            color: #475569;
-            border: 1px solid #334155;
-            cursor: not-allowed;
-        }
+.subtitle{
+    opacity:.7;
+    max-width:700px;
+    margin-bottom:50px;
+}
 
-        .maintenance-box {
-            margin-top: 20px;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            padding: 10px 24px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    width:100%;
+    max-width:1100px;
+}
 
-        .stats-row {
-            display: flex;
-            gap: 80px;
-        }
+.card{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    padding:35px;
+    transition:.3s;
+}
 
-        .stat-box {
-            text-align: center;
-        }
+.card:hover{
+    transform:translateY(-8px);
+    border-color:white;
+}
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 5px;
-        }
+.card h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
 
-        .stat-number span {
-            color: #2563eb;
-        }
+.add-btn{
+    background:white;
+    color:black;
+    padding:20px 40px;
+    border-radius:20px;
+    text-decoration:none;
+    font-weight:800;
+    font-size:20px;
+    transition:.3s;
+}
 
-        .stat-label {
-            font-size: 0.9rem;
-            color: #64748b;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.add-btn:hover{
+    transform:scale(1.05);
+}
 
-        .lang-card {
-            background: #050505;
-            border: 1px solid #1e293b;
-            padding: 30px 60px;
-            border-radius: 8px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #ffffff;
-            box-shadow: 0 0 50px rgba(30, 58, 138, 0.1);
-        }
+.stats{
+    margin-top:70px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    width:100%;
+    max-width:900px;
+}
 
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            margin-top: 20px;
-            padding: 30px 0;
-            background: #050505;
-            border-top: 1px solid #111111;
-            border-bottom: 1px solid #111111;
-        }
+.stat{
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.1);
+    padding:25px;
+    border-radius:20px;
+}
 
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-        }
+.stat h2{
+    font-size:40px;
+}
 
-        .review-card {
-            display: inline-block;
-            background: #000000;
-            border: 1px solid #222222;
-            padding: 25px;
-            margin-right: 40px;
-            text-align: left;
-            white-space: normal;
-            vertical-align: top;
-            width: 350px;
-            border-radius: 6px;
-        }
+.marquee{
+    width:100%;
+    overflow:hidden;
+    margin-top:40px;
+}
 
-        .review-card h4 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
+.track{
+    display:flex;
+    width:max-content;
+    animation:slide 25s linear infinite;
+}
 
-        .review-card p {
-            font-size: 0.95rem;
-            color: #94a3b8;
-            line-height: 1.5;
-            margin-bottom: 0;
-        }
+.review{
+    width:350px;
+    margin-right:25px;
+    background:#0d0d0d;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    padding:30px;
+    text-align:left;
+}
 
-        @keyframes marquee {
-            0% { transform: translate3d(100%, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
-        }
+.review h4{
+    margin-bottom:10px;
+}
 
-        .panel {
-            width: 100%;
-            max-width: 650px;
-            background: #050505;
-            border: 1px solid #1e293b;
-            border-radius: 8px;
-            margin-top: 50px;
-            padding: 25px;
-            text-align: left;
-        }
+.review p{
+    opacity:.8;
+}
 
-        .panel-header {
-            font-size: 0.8rem;
-            color: #64748b;
-            border-bottom: 1px solid #111111;
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
+@keyframes slide{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
 
-        .panel-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
+footer{
+    padding:40px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.1);
+    opacity:.7;
+}
 
-        .panel-label {
-            color: #94a3b8;
-        }
-
-        .panel-value {
-            font-weight: 600;
-        }
-
-        .panel-value.ok {
-            color: #ffffff;
-        }
-
-        .panel-value.warn {
-            color: #ef4444;
-        }
-
-        .nav-dots {
-            position: fixed;
-            right: 40px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            z-index: 1000;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            background: #222222;
-            border-radius: 50%;
-            border: 1px solid #444444;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .dot:hover {
-            background: #2563eb;
-            border-color: #2563eb;
-        }
-    </style>
+@media(max-width:768px){
+    .nav-links{
+        display:none;
+    }
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Sancak Studio</div>
-        <nav>
-            <a href="#page1">Ana Sayfa</a>
-            <a href="#page2">Altyapı</a>
-            <a href="#page3">Geliştirme</a>
-            <a href="#page4">Yorumlar</a>
-        </nav>
-        <a href="#page3" class="top-btn">Durum</a>
-    </header>
+<nav>
+    <div class="nav-container">
+        <div class="logo">SANCAK BOT STUDIO</div>
 
-    <div class="nav-dots">
-        <div class="dot" onclick="document.getElementById('page1').scrollIntoView();"></div>
-        <div class="dot" onclick="document.getElementById('page2').scrollIntoView();"></div>
-        <div class="dot" onclick="document.getElementById('page3').scrollIntoView();"></div>
-        <div class="dot" onclick="document.getElementById('page4').scrollIntoView();"></div>
+        <div class="nav-links">
+            <a href="#home">Ana Sayfa</a>
+            <a href="#languages">Diller</a>
+            <a href="#invite">Bot Ekle</a>
+            <a href="#reviews">Yorumlar</a>
+        </div>
     </div>
+</nav>
 
-    <section id="page1">
-        <div class="badge">Yeni Nesil Geliştirme Stüdyosu</div>
-        <h1>Geleceğin Yazılım Çözümleri ile <span>Kaliteyi Sunucuna</span> Taşı</h1>
-        <p>Sancak Bot Studio olarak topluluklarınızı daha güvenli, aktif ve yönetilebilir kılmak için yüksek performanslı ve amaca özel optimize edilmiş Discord bot altyapıları geliştiriyoruz.</p>
-        
-        <div class="cta-group">
-            <a href="#page3" class="btn btn-primary">Sistem Durumu</a>
-            <a href="#page2" class="btn btn-secondary">Altyapıyı İncele</a>
+<section id="home" class="hero">
+    <h1>SANCAK BOT STUDIO</h1>
+
+    <p>
+        Modern, hızlı ve profesyonel Discord botları geliştiriyoruz.
+        Sunucular için özel sistemler, moderasyon araçları, ekonomi,
+        kayıt, ticket ve tamamen özel projeler üretiyoruz.
+    </p>
+
+    <a href="#languages" class="btn">Keşfet</a>
+</section>
+
+<section id="languages">
+    <h2 class="title">Kullandığımız Diller</h2>
+
+    <p class="subtitle">
+        Güçlü, optimize ve ölçeklenebilir sistemler geliştiriyoruz.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <h3>JavaScript</h3>
+            <p>Discord.js tabanlı gelişmiş bot sistemleri.</p>
         </div>
 
-        <div class="stats-row">
-            <div class="stat-box">
-                <div class="stat-number">99.9<span>%</span></div>
-                <div class="stat-label">Uptime</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">48K<span>+</span></div>
-                <div class="stat-label">Aktif Kullanıcı</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-number">7<span>/</span>24</div>
-                <div class="stat-label">Güvence</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="page2">
-        <div class="badge">Geliştirme Ortamı</div>
-        <h1>Modüler Altyapı ve Kararlılık</h1>
-        <p>Projelerimizin tamamında hız, kararlılık, asenkron çalışma mimarisi ve yüksek veri işleme gücü nedeniyle kararlı endüstriyel standart dili kullanıyoruz:</p>
-        <div class="lang-card">
-            Python (Discord.py / Nextcord)
-        </div>
-    </section>
-
-    <section id="page3">
-        <div class="badge">Erişim Paneli</div>
-        <h1>Sancak Bot Dağıtımı</h1>
-        <p>Gelişmiş yönetim araçları, koruma modülleri ve entegre sistemleri sunucunuza dahil edin. Mevcut altyapı güncellemesi nedeniyle dağıtım kanalları geçici olarak askıya alınmıştır.</p>
-        <button class="btn btn-disabled" disabled>Botu Sunucuya Ekle</button>
-        <div class="maintenance-box">SİSTEM BAKIMDA / UNDER MAINTENANCE</div>
-    </section>
-
-    <section id="page4">
-        <div class="badge">Müşteri Deneyimleri</div>
-        <h1>Kullanıcı Geri Bildirimleri</h1>
-        <p>Sistemlerimizi aktif olarak kullanan sunucu kurucularının ve yöneticilerin kararları.</p>
-
-        <div class="marquee-container">
-            <div class="marquee-content">
-                <div class="review-card">
-                    <h4>------</h4>
-                    <p>"Sancak Guard sistemini kurduğumuz andan itibaren sunucudaki tüm açıklar kapandı. Performans fazlasıyla kararlı."</p>
-                </div>
-                <div class="review-card">
-                    <h4>------)</h4>
-                    <p>"Özel ticket modülü entegrasyonu sayesinde destek ekibimizin iş yükü ciddi oranda azaldı, temiz kod."</p>
-                </div>
-                <div class="review-card">
-                    <h4>------</h4>
-                    <p>"Sıfır log hatası ve optimize edilmiş RAM kullanımı. Altyapı kalitesini hissettiriyor."</p>
-                </div>
-                <div class="review-card">
-                    <h4>------</h4>
-                    <p>"Siyah beyaz tasarımın ağırlığı doğrudan iş kalitelerine yansımış. Net, hızlı ve tamamen güvenilir."</p>
-                </div>
-                <div class="review-card">
-                    <h4>------</h4>
-                    <p>"Büyük ölçekli sunucumuzda yüksek veri trafiğini hiçbir gecikme yaşamadan yönetiyor."</p>
-                </div>
-            </div>
+        <div class="card">
+            <h3>TypeScript</h3>
+            <p>Kurumsal ve büyük ölçekli projeler.</p>
         </div>
 
-        <div class="panel">
-            <div class="panel-header">
-                <span>SANCAK CORE METRICS</span>
-                <span>v4.1.2</span>
-            </div>
-            <div class="panel-row">
-                <span class="panel-label">Lisans Doğrulama:</span>
-                <span class="panel-value ok">BAŞARILI / AKTİF</span>
-            </div>
-            <div class="panel-row">
-                <span class="panel-label">Ana Dağıtım Modülü:</span>
-                <span class="panel-value warn">BAKIM MODU (MAINTENANCE)</span>
-            </div>
-            <div class="panel-row">
-                <span class="panel-label">Veri Tabanı Senkronizasyonu:</span>
-                <span class="panel-value ok">TAM ENTEGRE</span>
-            </div>
+        <div class="card">
+            <h3>Python</h3>
+            <p>API, otomasyon ve özel entegrasyonlar.</p>
         </div>
-    </section>
+
+        <div class="card">
+            <h3>Lua</h3>
+            <p>Oyun sunucuları ve özel script çözümleri.</p>
+        </div>
+    </div>
+</section>
+
+<section id="invite">
+    <h2 class="title">Botu Sunucuna Ekle</h2>
+
+    <p class="subtitle">
+        Gelişmiş moderasyon, koruma ve yönetim sistemleriyle
+        sunucunu güçlendir.
+    </p>
+
+    <a href="#" class="add-btn">
+        ➜ Botu Sunucuya Ekle
+    </a>
+
+    <div class="stats">
+        <div class="stat">
+            <h2>250+</h2>
+            <p>Aktif Sunucu</p>
+        </div>
+
+        <div class="stat">
+            <h2>99.9%</h2>
+            <p>Uptime</p>
+        </div>
+
+        <div class="stat">
+            <h2>24/7</h2>
+            <p>Destek</p>
+        </div>
+
+        <div class="stat">
+            <h2>50K+</h2>
+            <p>Kullanıcı</p>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <h2 class="title">Müşteri Yorumları</h2>
+
+    <p class="subtitle">
+        Topluluğumuzdan gelen bazı yorumlar.
+    </p>
+
+    <div class="marquee">
+        <div class="track">
+
+            <div class="review">
+                <h4>Ahmet</h4>
+                <p>Sunucumuz için yaptıkları bot kusursuz çalışıyor.</p>
+            </div>
+
+            <div class="review">
+                <h4>Emir</h4>
+                <p>Hem hızlı teslim ettiler hem de çok profesyoneller.</p>
+            </div>
+
+            <div class="review">
+                <h4>Mert</h4>
+                <p>Şimdiye kadar kullandığım en kaliteli sistemlerden biri.</p>
+            </div>
+
+            <div class="review">
+                <h4>Furkan</h4>
+                <p>Destek ekibi gerçekten çok ilgili.</p>
+            </div>
+
+            <div class="review">
+                <h4>Kerem</h4>
+                <p>Özel botumuz tam istediğimiz gibi yapıldı.</p>
+            </div>
+
+            <!-- Kopya yorumlar sonsuz kaydırma için -->
+
+            <div class="review">
+                <h4>Ahmet</h4>
+                <p>Sunucumuz için yaptıkları bot kusursuz çalışıyor.</p>
+            </div>
+
+            <div class="review">
+                <h4>Emir</h4>
+                <p>Hem hızlı teslim ettiler hem de çok profesyoneller.</p>
+            </div>
+
+            <div class="review">
+                <h4>Mert</h4>
+                <p>Şimdiye kadar kullandığım en kaliteli sistemlerden biri.</p>
+            </div>
+
+            <div class="review">
+                <h4>Furkan</h4>
+                <p>Destek ekibi gerçekten çok ilgili.</p>
+            </div>
+
+            <div class="review">
+                <h4>Kerem</h4>
+                <p>Özel botumuz tam istediğimiz gibi yapıldı.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Sancak Bot Studio • Modern Discord Bot Solutions
+</footer>
 
 </body>
 </html>
