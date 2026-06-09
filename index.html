@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sancak Bot Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid #111111;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #aaaaaa;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            color: #000000;
+            background-color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 2px solid #ffffff;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .btn.disabled {
+            background-color: #111111;
+            color: #555555;
+            border-color: #333333;
+            cursor: not-allowed;
+        }
+
+        .btn.disabled:hover {
+            background-color: #111111;
+            color: #555555;
+        }
+
+        .maintenance-text {
+            color: #ff0000;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .lang-box {
+            margin-top: 25px;
+            border: 2px dashed #ffffff;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            margin-top: 40px;
+            padding: 25px 0;
+            background: #0a0a0a;
+            border-top: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+
+        .review-card {
+            display: inline-block;
+            background: #000000;
+            border: 1px solid #ffffff;
+            padding: 20px;
+            margin-right: 50px;
+            text-align: left;
+            white-space: normal;
+            vertical-align: top;
+            width: 320px;
+        }
+
+        .review-card h4 {
+            margin-bottom: 8px;
+            text-decoration: underline;
+            font-size: 1rem;
+        }
+
+        .review-card p {
+            font-size: 0.9rem;
+            color: #dddddd;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        .studio-status-panel {
+            width: 100%;
+            max-width: 600px;
+            background: #050505;
+            border: 1px solid #333333;
+            margin-top: 40px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .status-header {
+            font-size: 0.8rem;
+            color: #666666;
+            border-bottom: 1px solid #222222;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .status-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .status-label {
+            color: #888888;
+        }
+
+        .status-value {
+            font-weight: bold;
+        }
+
+        .status-value.active {
+            color: #ffffff;
+        }
+
+        .status-value.alert {
+            color: #ff0000;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #222222;
+            border-radius: 50%;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dot:hover {
+            background: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-dots">
+        <div class="dot" onclick="document.getElementById('page1').scrollIntoView();"></div>
+        <div class="dot" onclick="document.getElementById('page2').scrollIntoView();"></div>
+        <div class="dot" onclick="document.getElementById('page3').scrollIntoView();"></div>
+        <div class="dot" onclick="document.getElementById('page4').scrollIntoView();"></div>
+    </div>
+
+    <section id="page1">
+        <h1>Sancak Bot Studio</h1>
+        <p>Biz kimiz? Sancak Bot Studio, topluluklarınızı daha güvenli, aktif ve kararlı kılmak için yüksek performanslı, amaca özel optimize edilmiş Discord bot çözümleri ve yönetim sistemleri geliştiren bağımsız bir yazılım atölyesidir.</p>
+        <a href="#page2" class="btn">Altyapımızı Gör</a>
+    </section>
+
+    <section id="page2">
+        <h1>Altyapımız</h1>
+        <p>Projelerimizi geliştirirken asenkron yapısı, hızı ve gelişmiş modulier kütüphane desteği nedeniyle ana dil olarak şu dili tercih ediyoruz:</p>
+        <div class="lang-box">
+            Python (Discord.py / Nextcord)
+        </div>
+        <a href="#page3" class="btn">Bot Durumu</a>
+    </section>
+
+    <section id="page3">
+        <h1>Sancak'ı Davet Et</h1>
+        <p>Gelişmiş yönetim panelleri, koruma sistemleri ve özel destek modülleriyle sunucunu hemen güçlendir. Altyapı çalışması nedeniyle davet linki geçici olarak erişime kapatılmıştır.</p>
+        <button class="btn disabled" disabled>Botu Sunucuya Ekle</button>
+        <div class="maintenance-text">[ SISTEM BAKIMDA / UNDER MAINTENANCE ]</div>
+    </section>
+
+    <section id="page4">
+        <h1>Müşteri Yorumları</h1>
+        <p>Bizi tercih eden sunucu sahiplerinin ve toplulukların geri bildirimleri.</p>
+
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <div class="review-card">
+                    <h4>Ahmet K.</h4>
+                    <p>"Sancak Guard sistemini kurduğumuzdan beri sunucuda tek bir açık kalmadı. Harika iş."</p>
+                </div>
+                <div class="review-card">
+                    <h4>Kadir T.</h4>
+                    <p>"Ticket sistemi muazzam çalışıyor, destek ekibimizin yükü yarı yarıya azaldı."</p>
+                </div>
+                <div class="review-card">
+                    <h4>Burak Y.</h4>
+                    <p>"Temiz kod, sıfır log hatası ve inanılmaz hızlı yanıt süreleri var."</p>
+                </div>
+                <div class="review-card">
+                    <h4>Serdar A.</h4>
+                    <p>"Siyah beyaz sadeliği işlerine de yansımış. Net, hızlı ve güvenilir."</p>
+                </div>
+                <div class="review-card">
+                    <h4>Volkan M.</h4>
+                    <p>"Sunucu korumasında üstlerine tanımam. Sancak Guard tek geçer."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="studio-status-panel">
+            <div class="status-header">
+                <span>Sancak Studio Core Status</span>
+                <span>v4.1.0</span>
+            </div>
+            <div class="status-row">
+                <span class="status-label">Lisans Kontrolü:</span>
+                <span class="status-value active">AKTIF / ONAYLANDI</span>
+            </div>
+            <div class="status-row">
+                <span class="status-label">Ana Modül Durumu:</span>
+                <span class="status-value alert">BAKIM MODU (MAINTENANCE)</span>
+            </div>
+            <div class="status-row">
+                <span class="status-label">Veritabanı Entegrasyonu:</span>
+                <span class="status-value active">SENKRONIZE</span>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
