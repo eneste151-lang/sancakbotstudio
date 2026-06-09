@@ -4,100 +4,113 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sancak Bot Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
 html{scroll-behavior:smooth}
-body{background:#000;color:#fff;overflow-x:hidden}
-body:before{
-content:"";position:fixed;inset:0;
-background:
-linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
-background-size:40px 40px;z-index:-2}
-.heroS{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-font-size:40vw;font-weight:900;color:rgba(255,255,255,.03);pointer-events:none;z-index:-1}
-nav{position:fixed;top:0;width:100%;padding:20px;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);z-index:100}
-nav div{max-width:1200px;margin:auto;display:flex;justify-content:space-between}
-nav a{color:#fff;text-decoration:none;margin-left:20px}
-section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 20px}
-h1{font-size:clamp(50px,8vw,90px)}
-p{max-width:800px;opacity:.8}
-.btn{margin-top:25px;padding:15px 30px;background:#fff;color:#000;text-decoration:none;border-radius:999px;font-weight:800}
-.title{font-size:48px;margin-bottom:20px}
-.roadmap{position:relative;width:min(900px,95vw);height:300px}
-.center-node,.lang{position:absolute;padding:18px 30px;border-radius:20px}
-.center-node{left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;color:#000;font-weight:800}
-.lang{background:#111;border:1px solid #333}
-.left-box{left:0;top:50%;transform:translateY(-50%)}
-.right-box{right:0;top:50%;transform:translateY(-50%)}
-.lineL,.lineR{position:absolute;height:2px;background:#fff;top:50%}
-.lineL{left:180px;width:220px}
-.lineR{right:180px;width:220px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;width:min(900px,95vw);margin-top:40px}
-.stat,.card,.review{background:#0c0c0c;border:1px solid #222;border-radius:20px;padding:25px}
+body{background:#050505;color:#fff;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:
+linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+background-size:50px 50px;z-index:-3}
+.glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);left:50%;top:20%;transform:translate(-50%,-50%);z-index:-2}
+.logo-bg{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font-size:35vw;font-weight:900;color:rgba(255,255,255,.025);z-index:-1;pointer-events:none}
+nav{position:fixed;top:0;width:100%;backdrop-filter:blur(15px);background:rgba(0,0,0,.55);border-bottom:1px solid #1f1f1f;z-index:100}
+.nav{max-width:1300px;margin:auto;padding:18px 25px;display:flex;justify-content:space-between}
+nav a{color:#fff;text-decoration:none;margin-left:25px}
+section{min-height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:100px 20px}
+.hero h1{font-size:clamp(55px,9vw,110px);line-height:1}
+.hero p{max-width:800px;margin-top:25px;color:#bdbdbd}
+.btn{margin-top:35px;padding:18px 34px;background:#fff;color:#000;text-decoration:none;border-radius:999px;font-weight:800}
+.badge{padding:10px 18px;border:1px solid #2b2b2b;border-radius:999px;margin-bottom:25px;background:#0d0d0d}
+.title{font-size:55px;margin-bottom:20px}
+.sub{color:#bdbdbd;max-width:700px;margin-bottom:50px}
+.roadmap{position:relative;width:min(1000px,95vw);height:420px}
+.center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;color:#000;padding:25px 45px;border-radius:22px;font-weight:800}
+.vline{position:absolute;left:50%;top:30%;width:2px;height:40%;background:#fff}
+.h1,.h2{position:absolute;height:2px;background:#fff;width:250px}
+.h1{top:35%;left:50%}
+.h2{top:65%;left:25%}
+.node{position:absolute;background:#0d0d0d;border:1px solid #252525;padding:22px 35px;border-radius:20px}
+.n1{right:0;top:27%}
+.n2{left:0;top:57%}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;width:min(1000px,95vw)}
+.card{background:#0d0d0d;border:1px solid #222;border-radius:22px;padding:30px}
+.card h2{font-size:40px}
 .marquee{width:100%;overflow:hidden}
-.track{display:flex;width:max-content;animation:slide 25s linear infinite}
-.review{width:320px;margin-right:20px;text-align:left}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-footer{text-align:center;padding:30px;border-top:1px solid #222}
+.track{display:flex;width:max-content;animation:m 25s linear infinite}
+.review{width:340px;background:#0d0d0d;border:1px solid #222;padding:25px;border-radius:22px;margin-right:20px;text-align:left}
+.review p{color:#bdbdbd;margin-top:10px}
+@keyframes m{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+footer{text-align:center;padding:35px;border-top:1px solid #1c1c1c;color:#9d9d9d}
 </style>
 </head>
 <body>
-<div class="heroS">S</div>
+<div class="glow"></div>
+<div class="logo-bg">S</div>
 
-<nav><div>
-<strong>SANCAK BOT STUDIO</strong>
-<span>
+<nav>
+<div class="nav">
+<b>SANCAK BOT STUDIO</b>
+<div>
 <a href="#home">Ana Sayfa</a>
-<a href="#lang">Diller</a>
+<a href="#tech">Teknolojiler</a>
 <a href="#bot">Bot</a>
-<a href="#yorum">Yorumlar</a>
-</span>
-</div></nav>
+<a href="#reviews">Yorumlar</a>
+</div>
+</div>
+</nav>
 
-<section id="home">
-<h1>Sunucunuzu Bir Sonraki Seviyeye Taşıyın</h1>
-<p>Sancak Bot Studio olarak modern Discord botları, özel sistemler ve profesyonel çözümler geliştiriyoruz.</p>
-<a class="btn" href="#lang">Keşfet</a>
+<section id="home" class="hero">
+<div class="badge">Türkiye'nin Yeni Nesil Discord Çözümleri</div>
+<h1>Sunucunuzu Sıradanlıktan Çıkarın.</h1>
+<p>Modern Discord botları, özel sistemler, güvenlik çözümleri ve profesyonel geliştirme hizmetleri. Topluluğunuz için güçlü altyapılar oluşturuyoruz.</p>
+<a href="#tech" class="btn">Projelerimizi Keşfet</a>
 </section>
 
-<section id="lang">
-<h2 class="title">Kullandığımız Teknolojiler</h2>
+<section id="tech">
+<h2 class="title">Uzmanlık Alanlarımız</h2>
+<p class="sub">Karmaşık olmayan, hızlı ve güçlü botlar geliştiriyoruz.</p>
+
 <div class="roadmap">
-<div class="center-node">Discord Botları</div>
-<div class="lineL"></div>
-<div class="lineR"></div>
-<div class="lang left-box">discord.py</div>
-<div class="lang right-box">Node.js</div>
+<div class="center">Sancak Bot Studio</div>
+<div class="vline"></div>
+<div class="h1"></div>
+<div class="h2"></div>
+<div class="node n1">discord.py</div>
+<div class="node n2">Node.js</div>
 </div>
 </section>
 
 <section id="bot">
-<h2 class="title">Botu Sunucuna Ekle</h2>
-<p>Gelişmiş moderasyon, kayıt, koruma ve eğlence sistemleri.</p>
-<a class="btn" href="#">Botu Sunucuya Ekle</a>
+<h2 class="title">Neden Biz?</h2>
+<p class="sub">Performans, güvenlik ve modern tasarım odaklı sistemler.</p>
 
 <div class="stats">
-<div class="stat"><h2>250+</h2><p>Sunucu</p></div>
-<div class="stat"><h2>50K+</h2><p>Kullanıcı</p></div>
-<div class="stat"><h2>99.9%</h2><p>Uptime</p></div>
-<div class="stat"><h2>24/7</h2><p>Destek</p></div>
+<div class="card"><h2>250+</h2><span>Aktif Sunucu</span></div>
+<div class="card"><h2>50K+</h2><span>Toplam Kullanıcı</span></div>
+<div class="card"><h2>99.9%</h2><span>Uptime</span></div>
+<div class="card"><h2>24/7</h2><span>Destek</span></div>
 </div>
+
+<a class="btn" style="margin-top:50px" href="#">Botu Sunucuna Ekle</a>
 </section>
 
-<section id="yorum">
+<section id="reviews">
 <h2 class="title">Müşteri Yorumları</h2>
-<div class="marquee"><div class="track">
-<div class="review"><b>Ahmet</b><p>Kaliteli ve hızlı hizmet.</p></div>
-<div class="review"><b>Emir</b><p>Bot beklentimizin üstünde çıktı.</p></div>
-<div class="review"><b>Mert</b><p>Tasarım ve sistemler harika.</p></div>
-<div class="review"><b>Furkan</b><p>Destek çok hızlı.</p></div>
-<div class="review"><b>Ahmet</b><p>Kaliteli ve hızlı hizmet.</p></div>
-<div class="review"><b>Emir</b><p>Bot beklentimizin üstünde çıktı.</p></div>
-<div class="review"><b>Mert</b><p>Tasarım ve sistemler harika.</p></div>
-<div class="review"><b>Furkan</b><p>Destek çok hızlı.</p></div>
-</div></div>
+<h1 class="title">Yorumlar Gerçek Değildir!</h2>
+<div class="marquee">
+<div class="track">
+<div class="review"><b>Ahmet</b><p>Beklediğimizden daha profesyonel çıktı.</p></div>
+<div class="review"><b>Emir</b><p>Tasarımı ve performansı mükemmel.</p></div>
+<div class="review"><b>Mert</b><p>Destek konusunda çok iyiler.</p></div>
+<div class="review"><b>Furkan</b><p>Sunucumuz tamamen değişti.</p></div>
+<div class="review"><b>Ahmet</b><p>Beklediğimizden daha profesyonel çıktı.</p></div>
+<div class="review"><b>Emir</b><p>Tasarımı ve performansı mükemmel.</p></div>
+<div class="review"><b>Mert</b><p>Destek konusunda çok iyiler.</p></div>
+<div class="review"><b>Furkan</b><p>Sunucumuz tamamen değişti.</p></div>
+</div>
+</div>
 </section>
 
 <footer>© 2026 Sancak Bot Studio</footer>
