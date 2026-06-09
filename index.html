@@ -1,127 +1,466 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sancak Bot Studio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
-html{scroll-behavior:smooth}
-body{background:#050505;color:#fff;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;background:
-linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-background-size:50px 50px;z-index:-3}
-.glow{position:fixed;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);left:50%;top:20%;transform:translate(-50%,-50%);z-index:-2}
-.logo-bg{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font-size:35vw;font-weight:900;color:rgba(255,255,255,.025);z-index:-1;pointer-events:none}
-nav{position:fixed;top:0;width:100%;backdrop-filter:blur(15px);background:rgba(0,0,0,.55);border-bottom:1px solid #1f1f1f;z-index:100}
-.nav{max-width:1300px;margin:auto;padding:18px 25px;display:flex;justify-content:space-between}
-nav a{color:#fff;text-decoration:none;margin-left:25px}
-section{min-height:100vh;display:flex;justify-content:center;align-items:center;flex-direction:column;text-align:center;padding:100px 20px}
-.hero h1{font-size:clamp(55px,9vw,110px);line-height:1}
-.hero p{max-width:800px;margin-top:25px;color:#bdbdbd}
-.btn{margin-top:35px;padding:18px 34px;background:#fff;color:#000;text-decoration:none;border-radius:999px;font-weight:800}
-.badge{padding:10px 18px;border:1px solid #2b2b2b;border-radius:999px;margin-bottom:25px;background:#0d0d0d}
-.title{font-size:55px;margin-bottom:20px}
-.sub{color:#bdbdbd;max-width:700px;margin-bottom:50px}
-.roadmap{position:relative;width:min(1000px,95vw);height:420px}
-.center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;color:#000;padding:25px 45px;border-radius:22px;font-weight:800}
-.vline{position:absolute;left:50%;top:30%;width:2px;height:40%;background:#fff}
-.h1,.h2{position:absolute;height:2px;background:#fff;width:250px}
-.h1{top:35%;left:50%}
-.h2{top:65%;left:25%}
-.node{position:absolute;background:#0d0d0d;border:1px solid #252525;padding:22px 35px;border-radius:20px}
-.n1{right:0;top:27%}
-.n2{left:0;top:57%}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;width:min(1000px,95vw)}
-.card{background:#0d0d0d;border:1px solid #222;border-radius:22px;padding:30px}
-.card h2{font-size:40px}
-.marquee{width:100%;overflow:hidden}
-.track{display:flex;width:max-content;animation:m 25s linear infinite}
-.review{width:340px;background:#0d0d0d;border:1px solid #222;padding:25px;border-radius:22px;margin-right:20px;text-align:left}
-.review p{color:#bdbdbd;margin-top:10px}
-@keyframes m{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-footer{text-align:center;padding:35px;border-top:1px solid #1c1c1c;color:#9d9d9d}
-.review-note{
-    color:#8d8d8d;
-    margin-top:-10px;
-    margin-bottom:35px;
-    font-size:14px;
-    font-style:italic;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sancak Bot Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background: #050505;
+            color: white;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px), linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+            background-size: 50px 50px;
+            z-index: -5;
+        }
+        .glow {
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            left: 50%;
+            top: 20%;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,.08), transparent 70%);
+            z-index: -4;
+        }
+        .logo-bg {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35vw;
+            font-weight: 900;
+            color: rgba(255,255,255,.02);
+            pointer-events: none;
+            z-index: -3;
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,.55);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #1d1d1d;
+            z-index: 999;
+        }
+        .nav {
+            max-width: 1300px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .links {
+            display: flex;
+            gap: 30px;
+        }
+        .links a {
+            color: white;
+            text-decoration: none;
+            transition: .3s;
+        }
+        .links a:hover {
+            opacity: .7;
+        }
+        section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        .title {
+            font-size: 60px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .sub {
+            color: #bdbdbd;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+        .hero h1 {
+            font-size: clamp(55px,8vw,110px);
+            max-width: 1200px;
+            line-height: 1;
+        }
+        .badge {
+            background: #0d0d0d;
+            border: 1px solid #2a2a2a;
+            padding: 10px 18px;
+            border-radius: 999px;
+            margin-bottom: 30px;
+        }
+        .hero p {
+            margin-top: 25px;
+            max-width: 800px;
+            color: #bdbdbd;
+            line-height: 1.8;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 18px 35px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 999px;
+            font-weight: 800;
+            transition: .3s;
+        }
+        .btn:hover {
+            transform: translateY(-4px);
+        }
+        .stats {
+            margin-top: 70px;
+            width: min(1200px,95vw);
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+            gap: 20px;
+        }
+        .card {
+            background: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 25px;
+            padding: 35px;
+            transition: .3s;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: #fff;
+        }
+        .card h2 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        .roadmap {
+            position: relative;
+            width: min(1000px,95vw);
+            height: 500px;
+        }
+        .center-node {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background: white;
+            color: black;
+            padding: 25px 45px;
+            border-radius: 22px;
+            font-weight: 800;
+        }
+        .vertical-line {
+            position: absolute;
+            left: 50%;
+            top: 25%;
+            width: 2px;
+            height: 50%;
+            background: white;
+        }
+        .horizontal-top {
+            position: absolute;
+            top: 32%;
+            left: 50%;
+            width: 260px;
+            height: 2px;
+            background: white;
+        }
+        .horizontal-bottom {
+            position: absolute;
+            top: 68%;
+            left: 24%;
+            width: 260px;
+            height: 2px;
+            background: white;
+        }
+        .node {
+            position: absolute;
+            background: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 25px 35px;
+            transition: .3s;
+        }
+        .node:hover {
+            border-color: white;
+        }
+        .discordpy {
+            right: 0;
+            top: 24%;
+        }
+        .nodejs {
+            left: 0;
+            top: 60%;
+        }
+        .pricing-grid {
+            width: min(1300px,95vw);
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .price-card {
+            background: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 25px;
+            padding: 35px;
+            text-align: left;
+            transition: .3s;
+        }
+        .price-card:hover {
+            border-color: white;
+            transform: translateY(-8px);
+        }
+        .price-card h3 {
+            font-size: 30px;
+        }
+        .price {
+            font-size: 50px;
+            font-weight: 900;
+            margin: 20px 0;
+        }
+        .price-card ul {
+            list-style: none;
+        }
+        .price-card li {
+            margin-bottom: 14px;
+            color: #c8c8c8;
+        }
+        .discord-box {
+            margin-top: 50px;
+            max-width: 800px;
+            background: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 25px;
+            padding: 40px;
+        }
+        .marquee {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+        .track {
+            display: flex;
+            width: max-content;
+            animation: slide 25s linear infinite;
+        }
+        .review {
+            width: 340px;
+            margin-right: 20px;
+            background: #0d0d0d;
+            border: 1px solid #222;
+            border-radius: 25px;
+            padding: 25px;
+            text-align: left;
+        }
+        .review p {
+            margin-top: 10px;
+            color: #bdbdbd;
+        }
+        @keyframes slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .review-note {
+            color: #8d8d8d;
+            font-size: 14px;
+            margin-top: -10px;
+        }
+        footer {
+            border-top: 1px solid #1d1d1d;
+            text-align: center;
+            padding: 40px;
+            color: #9d9d9d;
+        }
+        @media(max-width:768px) {
+            .links { display: none; }
+            .title { font-size: 42px; }
+        }
+    </style>
 </head>
 <body>
+
 <div class="glow"></div>
 <div class="logo-bg">S</div>
 
 <nav>
-<div class="nav">
-<b>SANCAK BOT STUDIO</b>
-<div>
-<a href="#home">Ana Sayfa</a>
-<a href="#tech">Teknolojiler</a>
-<a href="#bot">Bot</a>
-<a href="#reviews">Yorumlar</a>
-</div>
-</div>
+    <div class="nav">
+        <div class="brand">SANCAK BOT STUDIO</div>
+        <div class="links">
+            <a href="#home">Ana Sayfa</a>
+            <a href="#tech">Teknolojiler</a>
+            <a href="#pricing">Fiyatlar</a>
+            <a href="#reviews">Yorumlar</a>
+        </div>
+    </div>
 </nav>
 
 <section id="home" class="hero">
-<div class="badge">Türkiye'nin Yeni Nesil Discord Çözümleri</div>
-<h1>Sunucunuzu Sıradanlıktan Çıkarın.</h1>
-<p>Modern Discord botları, özel sistemler, güvenlik çözümleri ve profesyonel geliştirme hizmetleri. Topluluğunuz için güçlü altyapılar oluşturuyoruz.</p>
-<a href="#tech" class="btn">Projelerimizi Keşfet</a>
+    <div class="badge">Türkiye'nin Yeni Nesil Discord Çözümleri</div>
+    <h1>Sunucunuzu Sıradanlıktan Çıkarın.</h1>
+    <p>Ticket botları, moderasyon sistemleri ve özel Discord projeleri ile topluluğunuzu büyütün. Modern altyapı, profesyonel destek ve sürekli geliştirilen sistemlerle hizmet veriyoruz.</p>
+    <a href="#pricing" class="btn">Fiyatları İncele</a>
+    <div class="stats">
+        <div class="card">
+            <h2>250+</h2>
+            <p>Aktif Sunucu</p>
+        </div>
+        <div class="card">
+            <h2>50K+</h2>
+            <p>Toplam Kullanıcı</p>
+        </div>
+        <div class="card">
+            <h2>99.9%</h2>
+            <p>Uptime</p>
+        </div>
+        <div class="card">
+            <h2>24/7</h2>
+            <p>Destek</p>
+        </div>
+    </div>
 </section>
 
 <section id="tech">
-<h2 class="title">Uzmanlık Alanlarımız</h2>
-<p class="sub">Karmaşık olmayan, hızlı ve güçlü botlar geliştiriyoruz.</p>
-
-<div class="roadmap">
-<div class="center">Sancak Bot Studio</div>
-<div class="vline"></div>
-<div class="h1"></div>
-<div class="h2"></div>
-<div class="node n1">discord.py</div>
-<div class="node n2">Node.js</div>
-</div>
+    <h2 class="title">Uzmanlık Alanlarımız</h2>
+    <p class="sub">Hızlı, güvenli ve modern Discord botları geliştiriyoruz. Altyapımız tamamen Discord botları üzerine kuruludur.</p>
+    <div class="roadmap">
+        <div class="center-node">Sancak Bot Studio</div>
+        <div class="vertical-line"></div>
+        <div class="horizontal-top"></div>
+        <div class="horizontal-bottom"></div>
+        <div class="node discordpy">
+            <h3>discord.py</h3>
+            <p>Ticket sistemleri, moderasyon sistemleri, özel yönetim panelleri ve otomasyonlar.</p>
+        </div>
+        <div class="node nodejs">
+            <h3>Node.js</h3>
+            <p>Yüksek performanslı Discord botları, gelişmiş etkileşim sistemleri ve API entegrasyonları.</p>
+        </div>
+    </div>
 </section>
 
-<section id="bot">
-<h2 class="title">Neden Biz?</h2>
-<p class="sub">Performans, güvenlik ve modern tasarım odaklı sistemler.</p>
-
-<div class="stats">
-<div class="card"><h2>250+</h2><span>Aktif Sunucu</span></div>
-<div class="card"><h2>50K+</h2><span>Toplam Kullanıcı</span></div>
-<div class="card"><h2>99.9%</h2><span>Uptime</span></div>
-<div class="card"><h2>24/7</h2><span>Destek</span></div>
-</div>
-
-<a class="btn" style="margin-top:50px" href="#">Botu Sunucuna Ekle</a>
+<section id="pricing">
+    <h2 class="title">Fiyatlandırma</h2>
+    <p class="sub">İhtiyacınıza uygun bot paketini seçin.</p>
+    <div class="pricing-grid">
+        <div class="price-card">
+            <h3>Deneme Botları</h3>
+            <div class="price">Ücretsiz</div>
+            <ul>
+                <li>✓ 14 Gün Kullanım (7+7)</li>
+                <li>✓ Ticket Botu</li>
+                <li>✓ Moderasyon Botu</li>
+                <li>✓ Temel Özellikler</li>
+                <li>✓ Tam özellikler için satın alma gerekir</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h3>Ticket Botu</h3>
+            <div class="price">50₺/Ay</div>
+            <ul>
+                <li>✓ Genel Ticket Sistemi</li>
+                <li>✓ Transcript Sistemi</li>
+                <li>✓ Log Sistemi</li>
+                <li>✓ Özelleştirilebilir Yapı</li>
+                <li>✓ Ek özellik satın alınabilir</li>
+                <li>✓ Lisans aktif olduğu sürece kullanım</li>
+            </ul>
+        </div>
+        <div class="price-card">
+            <h3>Moderasyon Botu</h3>
+            <div class="price">100₺/Ay</div>
+            <ul>
+                <li>✓ 7/24 Canlı İzleme</li>
+                <li>✓ Hızlı Bildirim Sistemi</li>
+                <li>✓ Günlük Log Çıkarımı</li>
+                <li>✓ Gelişmiş Moderasyon Araçları</li>
+                <li>✓ Ek özellik satın alınabilir</li>
+                <li>✓ Lisans aktif olduğu sürece kullanım</li>
+            </ul>
+        </div>
+    </div>
+    <div class="discord-box">
+        <h2>Satın Alma ve Destek</h2>
+        <p class="sub" style="margin-top:20px">Bot satın almak, deneme sürümü talep etmek veya özel proje görüşmek için Discord sunucumuza katılabilirsiniz.</p>
+        <a class="btn" href="https://discord.gg/4nwdCAnrQ6" target="_blank">Discord Sunucusuna Katıl</a>
+    </div>
 </section>
 
 <section id="reviews">
-<h2 class="title">Müşteri Yorumları</h2>
-<p class="review-note">
-    Yorumlar temsilidir ve yalnızca örnek amaçlı gösterilmektedir.
-</p>
-<div class="marquee">
-<div class="track">
-<div class="review"><b>Ahmet</b><p>Beklediğimizden daha profesyonel çıktı.</p></div>
-<div class="review"><b>Emir</b><p>Tasarımı ve performansı mükemmel.</p></div>
-<div class="review"><b>Mert</b><p>Destek konusunda çok iyiler.</p></div>
-<div class="review"><b>Furkan</b><p>Sunucumuz tamamen değişti.</p></div>
-<div class="review"><b>Ahmet</b><p>Beklediğimizden daha profesyonel çıktı.</p></div>
-<div class="review"><b>Emir</b><p>Tasarımı ve performansı mükemmel.</p></div>
-<div class="review"><b>Mert</b><p>Destek konusunda çok iyiler.</p></div>
-<div class="review"><b>Furkan</b><p>Sunucumuz tamamen değişti.</p></div>
-</div>
-</div>
+    <h2 class="title">Müşteri Yorumları</h2>
+    <p class="review-note">Yorumlar temsilidir ve yalnızca örnek amaçlı gösterilmektedir.</p>
+    <div class="marquee">
+        <div class="track">
+            <div class="review">
+                <b>Ahmet</b>
+                <p>Beklediğimizden daha profesyonel çıktı.</p>
+            </div>
+            <div class="review">
+                <b>Emir</b>
+                <p>Tasarımı ve performansı mükemmel.</p>
+            </div>
+            <div class="review">
+                <b>Mert</b>
+                <p>Destek konusunda çok iyiler.</p>
+            </div>
+            <div class="review">
+                <b>Furkan</b>
+                <p>Sunucumuz tamamen değişti.</p>
+            </div>
+            <div class="review">
+                <b>Ahmet</b>
+                <p>Beklediğimizden daha profesyonel çıktı.</p>
+            </div>
+            <div class="review">
+                <b>Emir</b>
+                <p>Tasarımı ve performansı mükemmel.</p>
+            </div>
+            <div class="review">
+                <b>Mert</b>
+                <p>Destek konusunda çok iyiler.</p>
+            </div>
+            <div class="review">
+                <b>Furkan</b>
+                <p>Sunucumuz tamamen değişti.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<footer>© 2026 Sancak Bot Studio</footer>
+<section>
+    <h2 class="title">Neden Sancak Bot Studio?</h2>
+    <p class="sub">Amacımız sadece bir Discord botu sunmak değil, sunucunuzun yönetimini kolaylaştıracak, topluluğunuzu büyütecek ve size zaman kazandıracak sistemler geliştirmektir. Ticket sistemlerinden gelişmiş moderasyona, özel projelerden tamamen size özel çözümlere kadar geniş bir hizmet sunuyoruz.</p>
+</section>
+
+<footer>
+    © 2026 Sancak Bot Studio <br><br> Discord: https://discord.gg/4nwdCAnrQ6
+</footer>
+
 </body>
 </html>
